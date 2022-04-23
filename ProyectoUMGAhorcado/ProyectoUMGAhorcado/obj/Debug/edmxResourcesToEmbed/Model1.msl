@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AHORCADOModelStoreContainer" CdmEntityContainer="AHORCADOEntities">
+    <EntitySetMapping Name="TBL_DIFICULTAD">
+      <EntityTypeMapping TypeName="AHORCADOModel.TBL_DIFICULTAD">
+        <MappingFragment StoreEntitySet="TBL_DIFICULTAD">
+          <ScalarProperty Name="IDDIFICULTAD" ColumnName="IDDIFICULTAD" />
+          <ScalarProperty Name="NOMBREDIFICULTAD" ColumnName="NOMBREDIFICULTAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PALABRA">
+      <EntityTypeMapping TypeName="AHORCADOModel.TBL_PALABRA">
+        <MappingFragment StoreEntitySet="TBL_PALABRA">
+          <ScalarProperty Name="IDPALABRA" ColumnName="IDPALABRA" />
+          <ScalarProperty Name="PALABRA" ColumnName="PALABRA" />
+          <ScalarProperty Name="DIFICULTAD" ColumnName="DIFICULTAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

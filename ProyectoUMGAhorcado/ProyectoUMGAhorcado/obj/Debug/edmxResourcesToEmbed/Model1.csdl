@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AHORCADOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBL_DIFICULTAD">
+    <Key>
+      <PropertyRef Name="IDDIFICULTAD" />
+    </Key>
+    <Property Name="IDDIFICULTAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBREDIFICULTAD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBL_PALABRA" Relationship="Self.LLAVE_DIFICULTAD_TABLA_DIFF" FromRole="TBL_DIFICULTAD" ToRole="TBL_PALABRA" />
+  </EntityType>
+  <EntityType Name="TBL_PALABRA">
+    <Key>
+      <PropertyRef Name="IDPALABRA" />
+    </Key>
+    <Property Name="IDPALABRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PALABRA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DIFICULTAD" Type="Int32" />
+    <NavigationProperty Name="TBL_DIFICULTAD" Relationship="Self.LLAVE_DIFICULTAD_TABLA_DIFF" FromRole="TBL_PALABRA" ToRole="TBL_DIFICULTAD" />
+  </EntityType>
+  <Association Name="LLAVE_DIFICULTAD_TABLA_DIFF">
+    <End Role="TBL_DIFICULTAD" Type="Self.TBL_DIFICULTAD" Multiplicity="0..1" />
+    <End Role="TBL_PALABRA" Type="Self.TBL_PALABRA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_DIFICULTAD">
+        <PropertyRef Name="IDDIFICULTAD" />
+      </Principal>
+      <Dependent Role="TBL_PALABRA">
+        <PropertyRef Name="DIFICULTAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AHORCADOEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBL_DIFICULTAD" EntityType="Self.TBL_DIFICULTAD" />
+    <EntitySet Name="TBL_PALABRA" EntityType="Self.TBL_PALABRA" />
+    <AssociationSet Name="LLAVE_DIFICULTAD_TABLA_DIFF" Association="Self.LLAVE_DIFICULTAD_TABLA_DIFF">
+      <End Role="TBL_DIFICULTAD" EntitySet="TBL_DIFICULTAD" />
+      <End Role="TBL_PALABRA" EntitySet="TBL_PALABRA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
